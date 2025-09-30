@@ -18,11 +18,12 @@ export default function useSignup(url) {
       console.log(user.error);
       setError(user.error);
       setIsLoading(false);
-      return error;
+      return false;
     }
 
     localStorage.setItem("user", JSON.stringify(user));
     setIsLoading(false);
+    return true;
   };
 
   return { signup, isLoading, error };

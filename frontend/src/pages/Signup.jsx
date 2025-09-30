@@ -2,7 +2,7 @@ import useField from "../hooks/useField";
 import useSignup from "../hooks/useSignup";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   const name = useField("text");  
   const email = useField("email");
@@ -26,6 +26,10 @@ const Signup = () => {
       membership_status: membershipStatus.value,
     });
     if (!error) {
+      
+      sessionStorage.setItem("isAuthenticated", "true");
+
+       setIsAuthenticated(true)
       console.log("success");
       navigate("/");
     }
